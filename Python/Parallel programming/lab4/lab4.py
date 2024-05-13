@@ -9,7 +9,7 @@ message_queue = queue.Queue()
 # Параметры симуляции
 NUM_WRITERS = 3
 NUM_READERS = 4
-NUM_MESSAGES = 7
+NUM_MESSAGES = 5
 WRITER_PRIORITY = 0.2  # Имитация приоритета писателя\читателя 
 READER_PRIORITY = 0.1  # - таймер (меньше значение - выше приоритет)
 
@@ -36,7 +36,7 @@ def reader(reader_id):
     while True:
         try:
             start_time = time.time()
-            message = message_queue.get(timeout=0.1) # Контроль веса
+            message = message_queue.get(timeout=1) # Контроль веса
             time.sleep(READER_PRIORITY)
             end_time = time.time()
             with stats_lock:
